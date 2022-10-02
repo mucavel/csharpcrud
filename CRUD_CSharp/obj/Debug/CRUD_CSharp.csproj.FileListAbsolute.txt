@@ -1,0 +1,11 @@
+E:\C0D1NG\Ficheiros\C#\CRUD_CSharp\CRUD_CSharp\bin\Debug\CRUD_CSharp.exe.config
+E:\C0D1NG\Ficheiros\C#\CRUD_CSharp\CRUD_CSharp\bin\Debug\CRUD_CSharp.exe
+E:\C0D1NG\Ficheiros\C#\CRUD_CSharp\CRUD_CSharp\bin\Debug\CRUD_CSharp.pdb
+E:\C0D1NG\Ficheiros\C#\CRUD_CSharp\CRUD_CSharp\obj\Debug\CRUD_CSharp.csproj.AssemblyReference.cache
+E:\C0D1NG\Ficheiros\C#\CRUD_CSharp\CRUD_CSharp\obj\Debug\CRUD_CSharp.csproj.SuggestedBindingRedirects.cache
+E:\C0D1NG\Ficheiros\C#\CRUD_CSharp\CRUD_CSharp\obj\Debug\CRUD_CSharp.Properties.Resources.resources
+E:\C0D1NG\Ficheiros\C#\CRUD_CSharp\CRUD_CSharp\obj\Debug\CRUD_CSharp.csproj.GenerateResource.cache
+E:\C0D1NG\Ficheiros\C#\CRUD_CSharp\CRUD_CSharp\obj\Debug\CRUD_CSharp.csproj.CoreCompileInputs.cache
+E:\C0D1NG\Ficheiros\C#\CRUD_CSharp\CRUD_CSharp\obj\Debug\CRUD_CSharp.exe
+E:\C0D1NG\Ficheiros\C#\CRUD_CSharp\CRUD_CSharp\obj\Debug\CRUD_CSharp.pdb
+E:\C0D1NG\Ficheiros\C#\CRUD_CSharp\CRUD_CSharp\obj\Debug\CRUD_CSharp.crud.resources
