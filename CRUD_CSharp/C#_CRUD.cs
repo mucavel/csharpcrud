@@ -49,8 +49,11 @@ namespace CRUD_CSharp
         private void UpdateBtn_Click(object sender, System.EventArgs e)
         {
             conn.Open();
-            string updateQuery = "UPDATE dbo.crud SET fornecedor = '" + comboBoxSupplier.SelectedItem + "', quantidade = '" + textBoxQtd.Text + "', marca = '" + comboBoxBrand.SelectedItem + "', operador = '" + textBoxOperator.Text + "' WHERE id = '" + textBoxID.Text + "'";
-            SqlCommand cmd = new SqlCommand(updateQuery, conn);
+            SqlCommand cmd = new SqlCommand("UPDATE dbo.crud SET fornecedor = @fornecedor, quantidade = @quantidade, marca = @marca WHERE id = @id", conn);
+            cmd.Parameters.AddWithValue("@id", textBoxID.Text);
+            cmd.Parameters.AddWithValue("@fornecedor", comboBoxSupplier.SelectedItem);
+            cmd.Parameters.AddWithValue("@quantidade", textBoxQtd.Text);
+            cmd.Parameters.AddWithValue("@marca", comboBoxBrand.SelectedItem);
             cmd.ExecuteNonQuery();
             conn.Close();
             MessageBox.Show("Dados Atualizados com Sucesso!");
@@ -61,27 +64,31 @@ namespace CRUD_CSharp
 
         private void DeleteBtn_Click(object sender, System.EventArgs e)
         {
-            if (MessageBox.Show("Deseja mesmo Apagar os Dados?", "Apagar Dados", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (textBoxID.Text == null || textBoxID.Text == "")
             {
-                conn.Open();
-                string deleteQuery = "DELETE FROM dbo.crud WHERE id = '" + textBoxID.Text + "'";
-                SqlCommand cmd = new SqlCommand(deleteQuery, conn);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                MessageBox.Show("Dados Apagados.");
-
-                FillDataGrid();
+                MessageBox.Show("Coloque o ID correspondente ao Dados a apagar");
             }
+            else
+            {
+                if (MessageBox.Show("Deseja mesmo Apagar os Dados?", "Apagar Dados", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("DELETE FROM dbo.crud WHERE id = @id", conn);
+                    cmd.Parameters.AddWithValue("@id", textBoxID.Text);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    MessageBox.Show("Dados Apagados.");
 
-
-
+                    ClearFields();
+                    FillDataGrid();
+                }
+            }
         }
 
         private void FillDataGrid()
         {
-            string selectQuery = "SELECT * FROM dbo.crud";
             conn.Open();
-            SqlCommand cmd = new SqlCommand(selectQuery, conn);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.crud", conn);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable datatable = new DataTable();
             adapter.Fill(datatable);

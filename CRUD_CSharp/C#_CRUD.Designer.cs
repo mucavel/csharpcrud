@@ -45,6 +45,7 @@
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.ClearBtn = new System.Windows.Forms.Button();
+            this.author = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -250,12 +251,23 @@
             this.ClearBtn.UseVisualStyleBackColor = false;
             this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
             // 
+            // author
+            // 
+            this.author.AutoSize = true;
+            this.author.ForeColor = System.Drawing.Color.White;
+            this.author.Location = new System.Drawing.Point(269, 575);
+            this.author.Name = "author";
+            this.author.Size = new System.Drawing.Size(250, 13);
+            this.author.TabIndex = 18;
+            this.author.Text = "Desenvolvedor: Salvador Carlos Mucavele @ 2022";
+            // 
             // crud
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.ClientSize = new System.Drawing.Size(788, 575);
+            this.ClientSize = new System.Drawing.Size(788, 597);
+            this.Controls.Add(this.author);
             this.Controls.Add(this.ClearBtn);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.DeleteBtn);
@@ -302,6 +314,7 @@
         private System.Windows.Forms.Button DeleteBtn;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button ClearBtn;
+        private System.Windows.Forms.Label author;
     }
 }
 
