@@ -40,11 +40,12 @@
             this.comboBoxBrand = new System.Windows.Forms.ComboBox();
             this.comboBoxSupplier = new System.Windows.Forms.ComboBox();
             this.textBoxQtd = new System.Windows.Forms.TextBox();
-            this.sendBtn = new System.Windows.Forms.Button();
-            this.updateBtn = new System.Windows.Forms.Button();
-            this.deleteBtn = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.SendBtn = new System.Windows.Forms.Button();
+            this.UpdateBtn = new System.Windows.Forms.Button();
+            this.DeleteBtn = new System.Windows.Forms.Button();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.ClearBtn = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // crudlabel
@@ -181,55 +182,73 @@
             this.textBoxQtd.Size = new System.Drawing.Size(81, 29);
             this.textBoxQtd.TabIndex = 12;
             // 
-            // sendBtn
+            // SendBtn
             // 
-            this.sendBtn.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.sendBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sendBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.sendBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sendBtn.ForeColor = System.Drawing.Color.White;
-            this.sendBtn.Location = new System.Drawing.Point(206, 279);
-            this.sendBtn.Name = "sendBtn";
-            this.sendBtn.Size = new System.Drawing.Size(99, 35);
-            this.sendBtn.TabIndex = 13;
-            this.sendBtn.Text = "Enviar";
-            this.sendBtn.UseVisualStyleBackColor = false;
+            this.SendBtn.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.SendBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SendBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.SendBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SendBtn.ForeColor = System.Drawing.Color.White;
+            this.SendBtn.Location = new System.Drawing.Point(129, 279);
+            this.SendBtn.Name = "SendBtn";
+            this.SendBtn.Size = new System.Drawing.Size(99, 35);
+            this.SendBtn.TabIndex = 13;
+            this.SendBtn.Text = "Enviar";
+            this.SendBtn.UseVisualStyleBackColor = false;
+            this.SendBtn.Click += new System.EventHandler(this.SendBtn_Click);
             // 
-            // updateBtn
+            // UpdateBtn
             // 
-            this.updateBtn.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.updateBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.updateBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.updateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateBtn.ForeColor = System.Drawing.Color.White;
-            this.updateBtn.Location = new System.Drawing.Point(344, 279);
-            this.updateBtn.Name = "updateBtn";
-            this.updateBtn.Size = new System.Drawing.Size(99, 35);
-            this.updateBtn.TabIndex = 14;
-            this.updateBtn.Text = "Atualizar";
-            this.updateBtn.UseVisualStyleBackColor = false;
+            this.UpdateBtn.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.UpdateBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.UpdateBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.UpdateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateBtn.ForeColor = System.Drawing.Color.White;
+            this.UpdateBtn.Location = new System.Drawing.Point(257, 279);
+            this.UpdateBtn.Name = "UpdateBtn";
+            this.UpdateBtn.Size = new System.Drawing.Size(99, 35);
+            this.UpdateBtn.TabIndex = 14;
+            this.UpdateBtn.Text = "Atualizar";
+            this.UpdateBtn.UseVisualStyleBackColor = false;
+            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 
-            // deleteBtn
+            // DeleteBtn
             // 
-            this.deleteBtn.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.deleteBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteBtn.ForeColor = System.Drawing.Color.White;
-            this.deleteBtn.Location = new System.Drawing.Point(480, 279);
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(99, 35);
-            this.deleteBtn.TabIndex = 15;
-            this.deleteBtn.Text = "Apagar";
-            this.deleteBtn.UseVisualStyleBackColor = false;
+            this.DeleteBtn.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.DeleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DeleteBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.DeleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteBtn.ForeColor = System.Drawing.Color.White;
+            this.DeleteBtn.Location = new System.Drawing.Point(386, 279);
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.Size = new System.Drawing.Size(99, 35);
+            this.DeleteBtn.TabIndex = 15;
+            this.DeleteBtn.Text = "Apagar";
+            this.DeleteBtn.UseVisualStyleBackColor = false;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
-            // dataGridView1
+            // dataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 343);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(755, 220);
-            this.dataGridView1.TabIndex = 16;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Location = new System.Drawing.Point(16, 343);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.Size = new System.Drawing.Size(755, 220);
+            this.dataGridView.TabIndex = 16;
+            // 
+            // ClearBtn
+            // 
+            this.ClearBtn.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.ClearBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ClearBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.ClearBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearBtn.ForeColor = System.Drawing.Color.White;
+            this.ClearBtn.Location = new System.Drawing.Point(520, 279);
+            this.ClearBtn.Name = "ClearBtn";
+            this.ClearBtn.Size = new System.Drawing.Size(99, 35);
+            this.ClearBtn.TabIndex = 17;
+            this.ClearBtn.Text = "Limpar";
+            this.ClearBtn.UseVisualStyleBackColor = false;
+            this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
             // 
             // crud
             // 
@@ -237,10 +256,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.ClientSize = new System.Drawing.Size(788, 575);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.deleteBtn);
-            this.Controls.Add(this.updateBtn);
-            this.Controls.Add(this.sendBtn);
+            this.Controls.Add(this.ClearBtn);
+            this.Controls.Add(this.dataGridView);
+            this.Controls.Add(this.DeleteBtn);
+            this.Controls.Add(this.UpdateBtn);
+            this.Controls.Add(this.SendBtn);
             this.Controls.Add(this.textBoxQtd);
             this.Controls.Add(this.comboBoxSupplier);
             this.Controls.Add(this.comboBoxBrand);
@@ -257,7 +277,7 @@
             this.MaximizeBox = false;
             this.Name = "crud";
             this.Text = "C# - CRUD - Sistema de Gestão de Stock";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,10 +297,11 @@
         private System.Windows.Forms.ComboBox comboBoxBrand;
         private System.Windows.Forms.ComboBox comboBoxSupplier;
         private System.Windows.Forms.TextBox textBoxQtd;
-        private System.Windows.Forms.Button sendBtn;
-        private System.Windows.Forms.Button updateBtn;
-        private System.Windows.Forms.Button deleteBtn;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button SendBtn;
+        private System.Windows.Forms.Button UpdateBtn;
+        private System.Windows.Forms.Button DeleteBtn;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.Button ClearBtn;
     }
 }
 
