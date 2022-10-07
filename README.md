@@ -1,4 +1,4 @@
-# C# - CRUD  (EM DESENVOLVIMENTO)
+# C# - CRUD
 C# - CRUD - Sistema de Gestão de Stock
 
 # INSTRUÇÕES
