@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(crud));
             this.crudlabel = new System.Windows.Forms.Label();
             this.idlabel = new System.Windows.Forms.Label();
             this.fornecedorlabel = new System.Windows.Forms.Label();
@@ -153,7 +154,8 @@
             "Txilar",
             "Laurentina Preta",
             "Corona",
-            "Coca-Cola"});
+            "Coca-Cola",
+            "Água da Namaacha"});
             this.comboBoxBrand.Location = new System.Drawing.Point(555, 110);
             this.comboBoxBrand.Name = "comboBoxBrand";
             this.comboBoxBrand.Size = new System.Drawing.Size(216, 32);
@@ -230,9 +232,15 @@
             // 
             // dataGridView
             // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.GridColor = System.Drawing.Color.DarkSlateBlue;
             this.dataGridView.Location = new System.Drawing.Point(16, 343);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
             this.dataGridView.Size = new System.Drawing.Size(755, 220);
             this.dataGridView.TabIndex = 16;
             // 
@@ -286,8 +294,10 @@
             this.Controls.Add(this.idlabel);
             this.Controls.Add(this.crudlabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "crud";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "C# - CRUD - Sistema de Gestão de Stock";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

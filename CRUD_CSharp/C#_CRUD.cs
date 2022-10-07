@@ -1,5 +1,5 @@
-﻿using System.Data;
-using System.Data.SqlClient;
+﻿using MySql.Data.MySqlClient;
+using System.Data;
 using System.Windows.Forms;
 
 namespace CRUD_CSharp
@@ -11,7 +11,9 @@ namespace CRUD_CSharp
             InitializeComponent();
             FillDataGrid();
         }
-        readonly SqlConnection conn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=csharpcrud;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        readonly MySqlConnection conn = new MySqlConnection("SERVER=remotemysql.com;DATABASE=XIr9HZ4b3d;UID=XIr9HZ4b3d;PASSWORD=h18Q8wmED3");
+        //readonly MySqlConnection conn = new MySqlConnection("SERVER=127.0.0.1;DATABASE=cruddb;UID=root;PASSWORD=");
+
         private void ClearFields()
         {
             textBoxID.ResetText();
@@ -32,34 +34,49 @@ namespace CRUD_CSharp
 
         private void SendBtn_Click(object sender, System.EventArgs e)
         {
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO dbo.crud VALUES (@fornecedor, @quantidade, @marca, @operador)", conn);
-            cmd.Parameters.AddWithValue("@fornecedor", comboBoxSupplier.SelectedItem);
-            cmd.Parameters.AddWithValue("@quantidade", textBoxQtd.Text);
-            cmd.Parameters.AddWithValue("@marca", comboBoxBrand.SelectedItem);
-            cmd.Parameters.AddWithValue("@operador", textBoxOperator.Text);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Dados Inseridos com Sucesso!");
+            if (comboBoxSupplier.SelectedItem == null || textBoxQtd.Text == null || textBoxQtd.Text == "" || comboBoxBrand.SelectedItem == null || textBoxOperator.Text == null || textBoxOperator.Text == "")
+            {
+                MessageBox.Show("Preencha todos Campos!");
+            }
+            else
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO `crud`(`Fornecedor`, `Quantidade`, `Marca`, `Operador`) VALUES (@fornecedor, @quantidade, @marca, @operador)", conn);
+                cmd.Parameters.AddWithValue("@fornecedor", comboBoxSupplier.SelectedItem);
+                cmd.Parameters.AddWithValue("@quantidade", textBoxQtd.Text);
+                cmd.Parameters.AddWithValue("@marca", comboBoxBrand.SelectedItem);
+                cmd.Parameters.AddWithValue("@operador", textBoxOperator.Text);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Dados Inseridos com Sucesso!");
 
-            ClearFields();
-            FillDataGrid();
+                ClearFields();
+                FillDataGrid();
+            }
+
         }
 
         private void UpdateBtn_Click(object sender, System.EventArgs e)
         {
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE dbo.crud SET fornecedor = @fornecedor, quantidade = @quantidade, marca = @marca WHERE id = @id", conn);
-            cmd.Parameters.AddWithValue("@id", textBoxID.Text);
-            cmd.Parameters.AddWithValue("@fornecedor", comboBoxSupplier.SelectedItem);
-            cmd.Parameters.AddWithValue("@quantidade", textBoxQtd.Text);
-            cmd.Parameters.AddWithValue("@marca", comboBoxBrand.SelectedItem);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Dados Atualizados com Sucesso!");
+            if (textBoxID.Text == null || textBoxID.Text == "" || comboBoxSupplier.SelectedItem == null || textBoxQtd.Text == null || textBoxQtd.Text == "" || comboBoxBrand.SelectedItem == null)
+            {
+                MessageBox.Show("Preencha os Campos necessários!");
+            }
+            else
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("UPDATE crud SET fornecedor = @fornecedor, quantidade = @quantidade, marca = @marca WHERE id = @id", conn);
+                cmd.Parameters.AddWithValue("@id", textBoxID.Text);
+                cmd.Parameters.AddWithValue("@fornecedor", comboBoxSupplier.SelectedItem);
+                cmd.Parameters.AddWithValue("@quantidade", textBoxQtd.Text);
+                cmd.Parameters.AddWithValue("@marca", comboBoxBrand.SelectedItem);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Dados Atualizados com Sucesso!");
 
-            ClearFields();
-            FillDataGrid();
+                ClearFields();
+                FillDataGrid();
+            }
         }
 
         private void DeleteBtn_Click(object sender, System.EventArgs e)
@@ -70,10 +87,10 @@ namespace CRUD_CSharp
             }
             else
             {
-                if (MessageBox.Show("Deseja mesmo Apagar os Dados?", "Apagar Dados", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Deseja mesmo Apagar os Dados do ID '" + textBoxID.Text + "'?", "Apagar Dados", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("DELETE FROM dbo.crud WHERE id = @id", conn);
+                    MySqlCommand cmd = new MySqlCommand("DELETE FROM crud WHERE id = @id", conn);
                     cmd.Parameters.AddWithValue("@id", textBoxID.Text);
                     cmd.ExecuteNonQuery();
                     conn.Close();
@@ -88,11 +105,11 @@ namespace CRUD_CSharp
         private void FillDataGrid()
         {
             conn.Open();
-            SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.crud", conn);
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable datatable = new DataTable();
-            adapter.Fill(datatable);
-            dataGridView.DataSource = datatable;
+            dataGridView.DataSource = null;
+            MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM crud", conn);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            dataGridView.DataSource = dataTable;
             conn.Close();
         }
     }
