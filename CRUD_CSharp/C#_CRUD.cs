@@ -11,7 +11,7 @@ namespace CRUD_CSharp
             InitializeComponent();
             FillDataGrid();
         }
-
+        
         readonly MySqlConnection conn = new MySqlConnection("SERVER=127.0.0.1;DATABASE=cruddb;UID=root;PASSWORD=");
 
         private void ClearFields()
@@ -48,7 +48,7 @@ namespace CRUD_CSharp
                 cmd.Parameters.AddWithValue("@operador", textBoxOperator.Text);
                 cmd.ExecuteNonQuery();
                 conn.Close();
-                MessageBox.Show("Dados Inseridos com Sucesso!");
+                MessageBox.Show("Dados Inseridos com Sucesso!","Sucesso",MessageBoxButtons.OK,MessageBoxIcon.Information);
 
                 ClearFields();
                 FillDataGrid();
@@ -72,7 +72,8 @@ namespace CRUD_CSharp
                 cmd.Parameters.AddWithValue("@marca", comboBoxBrand.SelectedItem);
                 cmd.ExecuteNonQuery();
                 conn.Close();
-                MessageBox.Show("Dados Atualizados com Sucesso!");
+                MessageBox.Show("Dados Atualizados com Sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
 
                 ClearFields();
                 FillDataGrid();
@@ -83,18 +84,18 @@ namespace CRUD_CSharp
         {
             if (textBoxID.Text == null || textBoxID.Text == "")
             {
-                MessageBox.Show("Coloque o ID correspondente ao Dados a apagar");
+                MessageBox.Show("Coloque o ID correspondente ao Dados a apagar", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                if (MessageBox.Show("Deseja mesmo Apagar os Dados do ID '" + textBoxID.Text + "'?", "Apagar Dados", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Deseja mesmo Apagar os Dados do ID '" + textBoxID.Text + "'?", "Apagar Dados", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     conn.Open();
                     MySqlCommand cmd = new MySqlCommand("DELETE FROM crud WHERE id = @id", conn);
                     cmd.Parameters.AddWithValue("@id", textBoxID.Text);
                     cmd.ExecuteNonQuery();
                     conn.Close();
-                    MessageBox.Show("Dados Apagados.");
+                    MessageBox.Show("Dados Apagados.", "Apagar", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     ClearFields();
                     FillDataGrid();
