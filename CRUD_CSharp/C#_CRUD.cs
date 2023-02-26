@@ -11,7 +11,6 @@ namespace CRUD_CSharp
             InitializeComponent();
             FillDataGrid();
         }
-        
         readonly MySqlConnection conn = new MySqlConnection("SERVER=127.0.0.1;DATABASE=cruddb;UID=root;PASSWORD=");
 
         private void ClearFields()
